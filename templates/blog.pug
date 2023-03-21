@@ -1,0 +1,16 @@
+extends layout.pug
+
+block title
+  #{metadata.title}
+
+block header
+  div(class='relative mt-2 ml-4 flex w-full justify-center')
+    a(class='absolute left-0 underline', href='/')= "Go back"
+    p(class='hidden md:inline text-lg') metadata.title
+
+block content
+  article(id='article-content', class='h-full w-full px-4 md:px-6 text-xl text-gray-800 leading-normal') post ? post : safe
+
+block footer
+  div(class='flex w-full h-full justify-center items-center')
+    Written by salaadas

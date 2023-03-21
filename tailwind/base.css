@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply bg-[#1f1f29];
+}
+
+p, li {
+  @apply text-sky-50;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-orange-300;
+}
+
+a {
+  @apply text-orange-200;
+}
+
+.link {
+  @apply underline decoration-1 decoration-sky-600 hover:decoration-sky-400;
+}
+
+.navigate-btn {
+  @apply hover:bg-[#db55db] hover:text-[#fffdd0] hover:rounded-sm hover:border-8;
+}
+
+a.linked-header {
+  @apply shadow-none fill-sky-100;
+}
+
+::-moz-selection { /* Code for Firefox */
+  background: #fffdd0;
+  color: #db55db;
+}
+
+::selection {
+  background: #fffdd0;
+  color: #db55db;
+}
