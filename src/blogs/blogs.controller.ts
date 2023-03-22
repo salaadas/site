@@ -1,19 +1,23 @@
-import { Controller, Render, Get, HttpException, HttpStatus } from "@nestjs/common";
-import * as matter from 'gray-matter'
-import * as fs from 'fs'
-import { join } from 'path'
+import { Controller, Render, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
+import * as matter from 'gray-matter';
+import * as fs from 'fs';
+import { join } from 'path';
+import { HtmlRenderer, Parser } from 'commonmark';
+
+// markdown parser/reader/renderer
+const reader = new Parser({smart: true});
+const writer = new HtmlRenderer();
 
 type Frontmatter = {
     title: string;
-    file_name: string;
     description: string;
     date: string;
     tags: string[];
-    "estimate-read-time": string;
 };
 
+const BLOG_DIR: string = join(__dirname, '../..', 'blog');
+
 const getBlogs = () => {
-    const BLOG_DIR: string = join(__dirname, '../..', 'blog');
     const blogFiles: string[] = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.md'));
     const blogContent: matter.GrayMatterFile<string>[] = [];
     for (let file of blogFiles) {
@@ -59,7 +63,29 @@ export class BlogsController {
         }
     }
 
-    @Get('/:article')
+
+    @Get(':article')
     @Render('blog')
-    readBlog()
+    readBlog(@Param('article') article: string) {
+        console.log(join(BLOG_DIR, article + '.md'));
+        const file = matter.read(join(BLOG_DIR, article + '.md'));
+        const parsed = reader.parse(file.content);
+        const rendered = writer.render(parsed);
+
+        return {
+            title: file.data.title,
+            description: file.data.description,
+            date: file.data.date,
+            tags: file.data.tags,
+            content: rendered
+        };
+
+        // return {
+        //     title: 'a',
+        //     description: 'b',
+        //     date: 'c',
+        //     tags: 'd',
+        //     content: 'e'
+        // };
+    }
 }
