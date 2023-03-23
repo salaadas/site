@@ -1,12 +1,12 @@
 extends layout.pug
 
 block title
-  #{"Salaadas's blog"}
+  = "Salaadas's blog"
 
 block content
   div(class='w-full h-full px-4 md:px-6 text-xl text-gray-800 leading-normal')
-    h1(class='text-center text-3xl')= "All about tech"
-    h3(class='text-center text-lg mt-2 text-red-600')= "Blogs"
+    h1(class='text-center text-3xl')= 'All about tech'
+    h3(class='text-center text-lg mt-2')= 'Blogs'
     if blogs
       each fm in blogs
         a(class='mb-3', href='/blogs/' + fm.file_name)

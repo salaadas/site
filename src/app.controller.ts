@@ -6,7 +6,8 @@ export class AppController {
     constructor(private readonly appService: AppService) { }
 
     @Get()
-    getHello() {
-        return 'Hello world!';
+    @Render('home')
+    home() {
+        return {message: 'Hello world'};
     }
 }

@@ -1,19 +1,24 @@
-extends layout.pug
-
-block title
-  #{title}
-
-block header
-  div(class='relative mt-2 ml-4 flex-col w-full justify-center')
-    a(class='underline', href='/')= "Go back"
-    p(class='text-lg') #{title}
-    p(class='text-md') #{description}
-    p(class='text-md') #{tags}
-    p(class='text-md') #{date}
-
-block content
-  article(id='article-content', class='h-full w-full px-4 md:px-6 text-xl leading-normal') #{content ? content : 'Nothing to show'}
-
-block footer
-  div(class='flex w-full h-full justify-center items-center')
-    Written by salaadas
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/css/index.css')
+    title
+      =title + ' - Thuc Tran'
+  body(class='')
+    article
+      div(class='')
+        h1(class='')= title
+        p(class='')= description
+        small(class='')= read_time_estimate_minutes
+      main(class='') !{content}
+    p Tags: 
+      if tags
+        each tag in tags
+          code= tag + " "
+  hr
+  block footer
+    div(class='')
+      = "Written by salaadas"

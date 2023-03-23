@@ -8,12 +8,13 @@ import { HtmlRenderer, Parser } from 'commonmark';
 const reader = new Parser({smart: true});
 const writer = new HtmlRenderer();
 
-type Frontmatter = {
-    title: string;
-    description: string;
-    date: string;
-    tags: string[];
-};
+// type Frontmatter = {
+//     title: string;
+//     description: string;
+//     date: string;
+//     tags: string[];
+//     read_time_estimate_minutes: string;
+// };
 
 const BLOG_DIR: string = join(__dirname, '../..', 'blog');
 
@@ -77,15 +78,8 @@ export class BlogsController {
             description: file.data.description,
             date: file.data.date,
             tags: file.data.tags,
+            read_time_estimate_minutes: file.data.read_time_estimate_minutes,
             content: rendered
         };
-
-        // return {
-        //     title: 'a',
-        //     description: 'b',
-        //     date: 'c',
-        //     tags: 'd',
-        //     content: 'e'
-        // };
     }
 }

@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 html {
-  @apply bg-[#1f1f29];
+  @apply bg-[#181818];
+  @apply text-[#fffdd0];
+  line-height: 2.0;
 }
 
 p, li {
-  @apply text-sky-50;
+  @apply text-[#fffdd0];
 }
 
 h1,
@@ -16,11 +18,15 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-orange-300;
+  @apply text-orange-400;
 }
 
 a {
-  @apply text-orange-200;
+  @apply text-orange-300;
+}
+
+hr {
+    border-top: 3px dashed #fffdd0;
 }
 
 .link {
@@ -41,6 +47,6 @@ a.linked-header {
 }
 
 ::selection {
-  background: #fffdd0;
-  color: #db55db;
+  background: #fdba74;
+  color: #fffdd0;
 }
