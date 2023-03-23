@@ -1,0 +1,19 @@
+//- deps: {posts: markdown[], title: string, show_extra: bool, today: UTC}
+
+extends base.pug
+
+block content
+  h1= title
+  if show_extra
+    p
+      | #{"For a breakdown by post series, see "}
+      a(href='/blog/series') here
+      | #{"."}
+  p
+    ul
+      each post in posts
+        li
+          | #{post.body.data.date}
+          | #{" - "}
+          a(href=`/blogs/${post.file_name}`)= post.body.data.title
+        

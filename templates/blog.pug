@@ -5,8 +5,6 @@ html
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/css/index.css')
-    title
-      =title + ' - Thuc Tran'
   body(class='')
     article
       div(class='')
@@ -14,10 +12,6 @@ html
         p(class='')= description
         small(class='')= read_time_estimate_minutes
       main(class='') !{content}
-    p Tags: 
-      if tags
-        each tag in tags
-          code= tag + " "
   hr
   block footer
     div(class='')

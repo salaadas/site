@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    include ./asciiart.txt
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/css/index.css')
+    link(rel='manifest', href='/manifest.json')
+    link(rel='apple-touch-icon', sizes='180x180', href='/favicon/apple-touch-icon.png')
+    link(rel='icon', type="image/png", sizes='192x192', href='/favicon/android-chrome-192x192.png')
+    link(rel='icon', type="image/png", sizes='512x512', href='/favicon/android-chrome-512x512.png')
+    link(rel='icon', type="image/png", sizes='16x16', href='/favicon/favicon-16x16.png')
+    link(rel='icon', type="image/png", sizes='32x32', href='/favicon/favicon-32x32.png')
+    meta(name='msapplication-TileColor', content='#ffffff')
+    meta(name='msapplication-TileImage', content='/favicon/ms-icon-144x144.png')
+    meta(name='theme-color', content='#ffffff')
+    block style
+    title
+      block title
+        | #{title ? title + ' - Thuc Tran' : 'Thuc Tran'}
+  body(class='salaadas-dark')
+    div(class='container')
+      header
+        span.logo
+        nav
+          a(href='/') Thuc Tran
+          | #{" -- "}
+          a(href='/blogs') Blogs
+          | #{" -- "}
+          a(href='/contact') Contact
+          | #{" -- "}
+          a(href='/resume') Resume
+          | #{" -- "}
+          a(href='/vods') VODs
+    br
+    br
+    div(class='')
+      block content
+    hr
+    footer
+      blockquote
+        = `Copyright 2022-${now ? now.year() : '20XX'} Thuc Tran (salaadas). All opinions listed here are my own and are not representative of anyone.`
+      p
+        | #{"Like what you see? Check out my "}
+        a(href='https://www.youtube.com/@nerutheturtle3466') youtube
+        | #{"."}
+      p
+        | #{"Powered by the internet, rice, mizu, and Vietnam; see the "}
+        a(href='https://github.com/salaadas/site') source code
+        | #{"."}

@@ -13,38 +13,38 @@ const writer = new HtmlRenderer();
 //     description: string;
 //     date: string;
 //     tags: string[];
-//     read_time_estimate_minutes: string;
+//     read_time_estimate_minutes: string; // TODO: remove this hardcode
 // };
 
 const BLOG_DIR: string = join(__dirname, '../..', 'blog');
 
-const getBlogs = () => {
-    const blogFiles: string[] = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.md'));
-    const blogContent: matter.GrayMatterFile<string>[] = [];
-    for (let file of blogFiles) {
-        blogContent.push(matter.read(join(BLOG_DIR, file)));
+const getPosts = () => {
+    const postFiles: string[] = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.md'));
+    const postContent: matter.GrayMatterFile<string>[] = [];
+    for (let file of postFiles) {
+        postContent.push(matter.read(join(BLOG_DIR, file)));
     }
-    const blogs = blogFiles.map((blog, i) => {
+    const posts = postFiles.map((p, i) => {
         return {
-            file_name: blog.replace('.md', ''), // remove .md extension
-            body: blogContent[i] // content of markdown file after parsed
+            file_name: p.replace('.md', ''), // remove .md extension
+            body: postContent[i] // content of markdown file after parsed
         };
     });
 
     // TODO: sorts blog according to date (latest to oldest)
 
-    return blogs;
+    return posts;
 }
 
 @Controller('blogs')
-export class BlogsController {
+export class PostsController {
     @Get()
-    @Render('listblogs')
+    @Render('post_index')
     index() {
         try {
             // EXAMPLE:
             // 
-            // blogs[i] = {
+            // posts[i] = {
             //     file_name: 'abcxyz',
             //     body: {
             //         content: '<h1>...</h1>',
@@ -53,7 +53,10 @@ export class BlogsController {
             // }
             //
             return {
-                blogs: getBlogs()
+                posts: getPosts(),
+                title: 'Blogposts',
+                show_extra: true,
+                today: new Date()
             };
         } catch (error) {
             throw new HttpException({
@@ -67,7 +70,7 @@ export class BlogsController {
 
     @Get(':article')
     @Render('blog')
-    readBlog(@Param('article') article: string) {
+    post(@Param('article') article: string) {
         console.log(join(BLOG_DIR, article + '.md'));
         const file = matter.read(join(BLOG_DIR, article + '.md'));
         const parsed = reader.parse(file.content);

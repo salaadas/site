@@ -6,8 +6,11 @@ export class AppController {
     constructor(private readonly appService: AppService) { }
 
     @Get()
-    @Render('home')
+    @Render('base')
     home() {
-        return {message: 'Hello world'};
+        return {
+            content: 'Hello world',
+            styles: 'home.css'
+        };
     }
 }

@@ -4,12 +4,12 @@ import { AppService } from './app.service';
 import { MorganMiddleware } from '@nest-middlewares/morgan';
 import { join } from 'path'
 
-import { BlogsModule } from './blogs';
+import { PostsModule } from './posts';
 
 
 @Module({
     imports: [
-        BlogsModule,
+        PostsModule,
     ],
     controllers: [AppController],
     providers: [AppService],
