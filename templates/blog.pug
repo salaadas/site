@@ -1,19 +1,29 @@
-doctype html
-html
-  head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='ie=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='/css/index.css')
-  body(class='')
-    article
-      div(class='')
-        h1(class='')= title
-        p(class='')= description
-        p(class='')= date
-        small(class='')= `Read time estimate: ${read_time}`
-      main(class='') !{content}
+//- deps: {redirect_to: string, title: string, description: string, date: string, content: markdown, read_time, tags: string[]}
+extends base.pug
+
+block content
+  include ./post_metadata.pug
+  article
+    h1(class='')= title
+    small(class='')= `Read time estimate: ${read_time}`
+    //- NOTE: Used emoji in description
+    blockquote
+      p(class='')= `📩 ${description}`
+    main(class='') !{content}
   hr
-  block footer
-    div(class='')
-      = "Written by salaadas"
+  p
+    | #{`This article was posted on ${date}. My opinions may have change since the publication. Please `}
+    a(href='/contact') contact me
+    | #{` before jumping to conclusions shall there is anything unclear.`}
+  if series
+    p
+      | #{`Series: `}
+      a(href=`/blog/series/${series}`)= `${series}`
+  if tags
+    p
+      | #{`Tags: `}
+      each tag in tags
+        code(style='background: #64748b; border-radius: 5px; padding: 1px')=`${tag}`
+        | #{" "}
+    p
+      | #{`The art for mudkip was taken from the Internet`}

@@ -10,18 +10,20 @@ const reader = new Parser({smart: true});
 const writer = new HtmlRenderer();
 
 type Post = {
-    content: string,
+    content: string;
     data: {
         title: string;
         description: string;
         date: string;
-        tags: string[];
         read_time: number;
-    },
-    formatDate(): string
+        tags?: string[];
+        series?: string;
+    };
+    formatDate(): string;
 };
 
-const BLOG_DIR: string = join(__dirname, '../..', 'blog');
+const BLOG_FOLDER = 'blog';
+const BLOG_DIR: string = join(__dirname, '..', '..', BLOG_FOLDER);
 
 const getPosts = () => {
     const postFiles: string[] = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.md'));
@@ -48,7 +50,7 @@ const getPosts = () => {
             },
             formatDate() {
                 const parts = this.data.date.split('-');
-                return `${parts[2]} M${parts[1]} ${parts[0]}`;
+                return `${parts[0]} M${parts[1]} ${parts[2]}`; // YYYY MM DD
             }
         };
 
@@ -107,8 +109,6 @@ export class PostsController {
     @Get(':article')
     @Render('blog')
     post(@Param('article') article: string) {
-        console.log(`Rendering: ${article}.md`);
-
         const post = all_posts.find(p => p.file_name === article);
         if (!post) {
             throw new Error(`Cannot find post: ${article}`);
@@ -123,14 +123,16 @@ export class PostsController {
         if (!content) {
             throw new Error (`No content for post: ${article}`);
         }
-
+        
         return {
             title: frontmatter.title,
             description: frontmatter.description,
             date: post.body.formatDate(),
             tags: frontmatter.tags,
             read_time: frontmatter.read_time,
-            content
+            series: frontmatter.series,
+            link: `${join(BLOG_FOLDER), post.file_name}`,
+            content,
         };
     }
 }

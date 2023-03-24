@@ -1,0 +1,24 @@
+//- deps: {title = 'Contact Information'}
+
+extends base.pug
+
+
+block content
+  h1= title
+  .grid
+    div(class='cell -6of12')
+      h3 Email
+      p thuctd.tran@gmail.com
+
+      h3 Social media
+      if links
+        ul
+          each link in links
+            li= link
+    
+    div(class='cell -6of12')
+      h3 Other Information
+      h4 Discord
+      p
+        code neru
+        | #{` Please note that I seldom go online on discord.`}
