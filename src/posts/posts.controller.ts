@@ -3,18 +3,22 @@ import * as matter from 'gray-matter';
 import * as fs from 'fs';
 import { join } from 'path';
 import { HtmlRenderer, Parser } from 'commonmark';
+const readingTime = require('reading-time');
 
 // markdown parser/reader/renderer
 const reader = new Parser({smart: true});
 const writer = new HtmlRenderer();
 
-// type Frontmatter = {
-//     title: string;
-//     description: string;
-//     date: string;
-//     tags: string[];
-//     read_time_estimate_minutes: string; // TODO: remove this hardcode
-// };
+type Post = {
+    content: string,
+    data: {
+        title: string;
+        description: string;
+        date: string;
+        tags: string[];
+        read_time: number;
+    }
+};
 
 const BLOG_DIR: string = join(__dirname, '../..', 'blog');
 
@@ -24,10 +28,23 @@ const getPosts = () => {
     for (let file of postFiles) {
         postContent.push(matter.read(join(BLOG_DIR, file)));
     }
-    const posts = postFiles.map((p, i) => {
+    const posts = postFiles.map((p: string, i) => {
+        const file = matter.read(join(BLOG_DIR, p));
+        const parsed = reader.parse(file.content); // AST Node tree
+        const rendered = writer.render(parsed); // HTML in form of string
+
+        const read_time = Math.ceil(readingTime(rendered).minutes);
+        const frontmatter = postContent[i].data;
+
+        const body = {
+            content: rendered,
+            data: frontmatter
+        };
+        body.data.read_time = read_time;
+
         return {
-            file_name: p.replace('.md', ''), // remove .md extension
-            body: postContent[i] // content of markdown file after parsed
+            file_name: p.replace('.md', ''), // file name of current post
+            body // contains metadata and parsed markdown of current post
         };
     });
 
@@ -35,6 +52,8 @@ const getPosts = () => {
 
     return posts;
 }
+
+let all_posts = getPosts(); // all posts of the site
 
 @Controller('blogs')
 export class PostsController {
@@ -53,7 +72,7 @@ export class PostsController {
             // }
             //
             return {
-                posts: getPosts(),
+                posts: (all_posts = getPosts()),
                 title: 'Blogposts',
                 show_extra: true,
                 today: new Date()
@@ -71,18 +90,30 @@ export class PostsController {
     @Get(':article')
     @Render('blog')
     post(@Param('article') article: string) {
-        console.log(join(BLOG_DIR, article + '.md'));
-        const file = matter.read(join(BLOG_DIR, article + '.md'));
-        const parsed = reader.parse(file.content);
-        const rendered = writer.render(parsed);
+        console.log(`Rendering: ${article}.md`);
+
+        const post = all_posts.find(p => p.file_name === article);
+        if (!post) {
+            throw new Error(`Cannot find post: ${article}`);
+        }
+
+        const frontmatter = post.body.data;
+        if (!frontmatter) {
+            throw new Error (`No metadata available for post: ${article}`);
+        }
+        
+        const content = post.body.content;
+        if (!content) {
+            throw new Error (`No content for post: ${article}`);
+        }
 
         return {
-            title: file.data.title,
-            description: file.data.description,
-            date: file.data.date,
-            tags: file.data.tags,
-            read_time_estimate_minutes: file.data.read_time_estimate_minutes,
-            content: rendered
+            title: frontmatter.title,
+            description: frontmatter.description,
+            date: frontmatter.date,
+            tags: frontmatter.tags,
+            read_time: frontmatter.read_time,
+            content
         };
     }
 }

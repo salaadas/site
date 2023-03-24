@@ -10,7 +10,7 @@ html
       div(class='')
         h1(class='')= title
         p(class='')= description
-        small(class='')= read_time_estimate_minutes
+        small(class='')= `Read time estimate: ${read_time}`
       main(class='') !{content}
   hr
   block footer
