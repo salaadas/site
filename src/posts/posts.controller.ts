@@ -17,7 +17,8 @@ type Post = {
         date: string;
         tags: string[];
         read_time: number;
-    }
+    },
+    formatDate(): string
 };
 
 const BLOG_DIR: string = join(__dirname, '../..', 'blog');
@@ -36,11 +37,20 @@ const getPosts = () => {
         const read_time = Math.ceil(readingTime(rendered).minutes);
         const frontmatter = postContent[i].data;
 
-        const body = {
+        const body: Post = {
             content: rendered,
-            data: frontmatter
+            data: {
+                title: frontmatter.title,
+                description: frontmatter.description,
+                tags: frontmatter.tags,
+                date: frontmatter.date,
+                read_time
+            },
+            formatDate() {
+                const parts = this.data.date.split('-');
+                return `${parts[2]} M${parts[1]} ${parts[0]}`;
+            }
         };
-        body.data.read_time = read_time;
 
         return {
             file_name: p.replace('.md', ''), // file name of current post
@@ -49,11 +59,18 @@ const getPosts = () => {
     });
 
     // TODO: sorts blog according to date (latest to oldest)
+    posts.sort((a, b) => {
+        const dateA = new Date(a.body.data.date);
+        const dateB = new Date(b.body.data.date);
+
+        return dateB.getTime() - dateA.getTime();
+    });
 
     return posts;
 }
 
-let all_posts = getPosts(); // all posts of the site
+// All posts of the site
+let all_posts = getPosts(); 
 
 @Controller('blogs')
 export class PostsController {
@@ -110,7 +127,7 @@ export class PostsController {
         return {
             title: frontmatter.title,
             description: frontmatter.description,
-            date: frontmatter.date,
+            date: post.body.formatDate(),
             tags: frontmatter.tags,
             read_time: frontmatter.read_time,
             content
