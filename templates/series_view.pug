@@ -1,0 +1,13 @@
+//- deps: {name: string, title: `${name} posts`, description: string, posts: Post[]}
+
+extends base.pug
+
+block content
+  h1= `Series: ${name}`
+  p= description
+  ul
+    each post in posts
+      li
+        | #{`${post.body.formatDate()}`}
+        | #{" - "}
+        a(href=`/blogs/${post.file_name}`)= post.body.data.title

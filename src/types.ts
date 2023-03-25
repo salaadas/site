@@ -9,16 +9,34 @@ type Author = {
 };
 
 type Post = {
-    content: string;
-    data: {
-        title: string;
-        description: string;
-        date: string;
-        read_time: number;
-        tags?: string[];
-        series?: string;
+    file_name: string;
+    body: {
+        content: string;
+        data: {
+            title: string;
+            description: string;
+            date: string;
+            read_time: number;
+            tags?: string[];
+            series?: string;
+        };
+        formatDate(): string;
     };
-    formatDate(): string;
 };
 
-export { Contact, Post, Author };
+type SeriesDescription = {
+    name: string;
+    details: string;
+};
+
+type Config = {
+    port: number;
+    series_descriptions: SeriesDescription[];
+};
+
+type State = {
+    cfg: Config;
+    blog: Post[];
+};
+
+export { Contact, Post, Author, State, Config };

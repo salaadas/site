@@ -5,6 +5,7 @@ import { join } from 'path';
 import { HtmlRenderer, Parser } from 'commonmark';
 import { Post } from "src/types";
 const readingTime = require('reading-time');
+import { state } from "src/app/config";
 
 // markdown parser/reader/renderer
 const reader = new Parser({smart: true});
@@ -13,13 +14,15 @@ const writer = new HtmlRenderer();
 const BLOG_FOLDER = 'blog';
 const BLOG_DIR: string = join(__dirname, '..', '..', BLOG_FOLDER);
 
-const getPosts = () => {
+export const hello = () => console.log('Hello world');
+
+export const getPosts = (): Post[] => {
     const postFiles: string[] = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.md'));
     const postContent: matter.GrayMatterFile<string>[] = [];
     for (let file of postFiles) {
         postContent.push(matter.read(join(BLOG_DIR, file)));
     }
-    const posts = postFiles.map((p: string, i) => {
+    const posts: Post[] = postFiles.map((p: string, i) => {
         const file = matter.read(join(BLOG_DIR, p));
         const parsed = reader.parse(file.content); // AST Node tree
         const rendered = writer.render(parsed); // HTML in form of string
@@ -27,7 +30,7 @@ const getPosts = () => {
         const read_time = Math.ceil(readingTime(rendered).minutes);
         const frontmatter = postContent[i].data;
 
-        const body: Post = {
+        const body = {
             content: rendered,
             data: {
                 title: frontmatter.title,
@@ -53,15 +56,11 @@ const getPosts = () => {
     posts.sort((a, b) => {
         const dateA = new Date(a.body.data.date);
         const dateB = new Date(b.body.data.date);
-
         return dateB.getTime() - dateA.getTime();
     });
 
     return posts;
 }
-
-// All posts of the site
-let all_posts = getPosts(); 
 
 @Controller('blogs')
 export class PostsController {
@@ -80,7 +79,7 @@ export class PostsController {
             // }
             //
             return {
-                posts: (all_posts = getPosts()),
+                posts: (state.blog = getPosts()),
                 title: 'Blogposts',
                 show_extra: true,
                 today: new Date()
@@ -98,7 +97,7 @@ export class PostsController {
     @Get(':article')
     @Render('blog')
     post(@Param('article') article: string) {
-        const post = all_posts.find(p => p.file_name === article);
+        const post = state.blog.find(p => p.file_name === article);
         if (!post) {
             throw new Error(`Cannot find post: ${article}`);
         }
@@ -122,6 +121,15 @@ export class PostsController {
             series: frontmatter.series,
             link: `${join(BLOG_FOLDER), post.file_name}`,
             content,
+        };
+    }
+
+    @Get('/series')
+    @Render('post-series')
+    series() {
+        return {
+            title: 'Blogposts by series',
+            series: '',
         };
     }
 }

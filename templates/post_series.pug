@@ -1,0 +1,11 @@
+//- deps: {title= Blogposts by series, series: SeriesDescription[]}
+
+extends base.pug
+
+block content
+  h1= title
+  p Some posts of mine are meant to be read in order. Here is the list of all the series I have written along side their descriptions.
+  p
+    ul
+      each set in series
+        li= set

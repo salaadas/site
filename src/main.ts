@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
-
+import { state } from './app/config';
 import { join } from 'path';
 
 async function bootstrap() {
@@ -11,6 +11,6 @@ async function bootstrap() {
     app.setBaseViewsDir(join(__dirname, '..', 'templates')); // for view engine templates
     app.setViewEngine('pug');
 
-    await app.listen(3000);
+    await app.listen(state.cfg.port);
 }
 bootstrap();
