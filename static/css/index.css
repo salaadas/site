@@ -5,9 +5,6 @@ html {
     font-size: 18px;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    margin: 1em auto;
-    padding: 0 0.55em;
-    max-width: 750px;
 }
 
 body {
@@ -18,6 +15,21 @@ body {
     /* font-family: "Iosevka Aile Iaso", Menlo, monospace; */
     font-weight: 500;
     word-wrap: break-word;    
+}
+
+.logo {
+    background-color: #fffdd0;
+    -webkit-mask: url("/img/sigma.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+    mask: url("/img/sigma.svg");
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+    height: 75px;
+    width: 30px;
+    float: left;
+    display: inline;
+    margin: 0.25em 0.5em 0.25em 0.25em;
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -90,6 +102,56 @@ a:visited:hover {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+}
+
+.grid.\-top {
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.grid.\-middle {
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.grid.\-bottom {
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.grid.\-stretch {
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.grid.\-baseline {
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.grid.\-left {
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.grid.\-center {
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.grid.\-right {
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.grid.\-between {
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.grid.\-around {
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
 }
 
 .cell {
@@ -298,4 +360,18 @@ hr:after {
     line-height: 20px;
     width: 100%;
     word-wrap: break-word;
+}
+
+p {
+  margin: 0 0 1.75rem;
+}
+
+.container {
+  max-width: 60rem;
+}
+
+.container,
+.container-fluid {
+  margin: 1em auto;
+  padding: 0 1rem;
 }

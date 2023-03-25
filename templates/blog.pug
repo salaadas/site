@@ -7,8 +7,7 @@ block content
     h1(class='')= title
     small(class='')= `Read time estimate: ${read_time}`
     //- NOTE: Used emoji in description
-    blockquote
-      p(class='')= `📩 ${description}`
+    blockquote= `📩 ${description}`
     main(class='') !{content}
   hr
   p

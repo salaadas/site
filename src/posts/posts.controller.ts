@@ -3,24 +3,12 @@ import * as matter from 'gray-matter';
 import * as fs from 'fs';
 import { join } from 'path';
 import { HtmlRenderer, Parser } from 'commonmark';
+import { Post } from "src/types";
 const readingTime = require('reading-time');
 
 // markdown parser/reader/renderer
 const reader = new Parser({smart: true});
 const writer = new HtmlRenderer();
-
-type Post = {
-    content: string;
-    data: {
-        title: string;
-        description: string;
-        date: string;
-        read_time: number;
-        tags?: string[];
-        series?: string;
-    };
-    formatDate(): string;
-};
 
 const BLOG_FOLDER = 'blog';
 const BLOG_DIR: string = join(__dirname, '..', '..', BLOG_FOLDER);
@@ -46,6 +34,7 @@ const getPosts = () => {
                 description: frontmatter.description,
                 tags: frontmatter.tags,
                 date: frontmatter.date,
+                series: frontmatter.series,
                 read_time
             },
             formatDate() {

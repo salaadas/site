@@ -1,7 +1,16 @@
 ---
-title: Hello
-description: this is my first blog
-tags: ['shit', 'how', 'did', 'i', 'end', 'up', 'in', 'this']
+title: 'Hello'
+description: 'this is my first blog'
+series: 'fuck-the-world'
+tags:
+    - shit
+    - how
+    - did
+    - i
+    - end
+    - up
+    - in
+    - this
 date: '2022-08-28'
 ---
 

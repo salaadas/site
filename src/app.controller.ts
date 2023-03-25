@@ -1,21 +1,17 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import { AppService } from './app.service';
-
-type Contact = {
-    title: string;
-    links?: string[];
-}
+import { Contact } from './types';
+import { salaadas } from './consts'
 
 @Controller()
 export class AppController {
     constructor(private readonly appService: AppService) { }
 
     @Get()
-    @Render('base')
+    @Render('home')
     home() {
         return {
-            content: 'Hello world',
-            styles: 'home.css'
+            salaadas
         };
     }
 

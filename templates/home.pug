@@ -1,12 +1,45 @@
-doctype html
-html
-  head
-    include ./asciiart.txt
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='ie=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='/css/index.css')
-    title= 'Thuc Tran'
-  body(class='')
+//- deps: {title = None, salaadas: Author}
 
-    p Here is the message: <i>#{message}</i>
+extends base.pug
+
+block content
+  link(rel='canonical' href='https://thuctran.xyz')
+  //- meta(name='google-site-verification' content='')
+  //- schema_person(salaadas)
+  
+  meta(property='og:type' content='website')
+  meta(property='og:title' content=`${salaadas.name}`)
+  meta(property='og:site_name' content=`${salaadas.job_title}`)
+  meta(name='description' content=`${salaadas.job_title}`)
+  meta(name='author' content=`${salaadas.name}`)
+
+  .grid
+    div(class='cell -3of12')
+      img(src='/img/avatar.png' alt='My avatar - mudkip')
+      br
+      a(href='/contact') Contact me
+    div(class='cell -9of12')
+      h1= salaadas.name
+      h4= salaadas.job_title
+      blockquote
+        | It is currently 
+        i
+          span(id='time')= ` `
+        | #{" "}
+        | in Ho Chi Minh, Vietnam
+      h5 Skills
+      ul
+        li Typescript, C, Nim, bash and other languages
+        li Insatiable thirst for knowledge
+        li Like to make things, break things and fix things
+      h5 Quick Links
+      ul
+        li
+          a(href='https://github.com/salaadas' rel='me') Github
+        li
+          a(href='https://www.facebook.com/thuctd.tran/' rel='me') Facebook
+        li
+          a(href='https://youtube.com/playlist?list=PLTEvdy7cOEn4FDXp4WGyb8aRI5w7VRQW9') Playlist
+
+      script
+        include ../static/js/time.js

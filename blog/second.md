@@ -1,11 +1,12 @@
 ---
-title: Hi all
-description: My second blog
+title: 'Hi all'
+description: 'My second blog'
 tags:
     - hello
     - fuck
     - you
     - too
+series: 'fuck-the-world'
 date: '2023-03-24'
 ---
 
