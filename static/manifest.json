@@ -10,20 +10,23 @@
     "orientation": "any",
     "icons": [
         {
-            "src": "/static/img/avatar.png",
-            "sizes": "980x980"
-        },
-        {
-            "src": "/static/favicon/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "density": "4.0"
-        },
-        {
-            "src": "/static/favicon/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type":
-            "image/png"
+            "src": "/static/favicon/favicon.ico",
+            "sizes": "32x32 16x16",
+            "type": "image/x-icon"
         }
+        // {
+        //     "src": "/static/img/avatar.png",
+        //     "sizes": "256x256"
+        // },
+        // {
+        //     "src": "/static/favicon/android-chrome-192x192.png",
+        //     "sizes": "192x192",
+        //     "type": "image/png"
+        // },
+        // {
+        //     "src": "/static/favicon/android-chrome-512x512.png",
+        //     "sizes": "512x512",
+        //     "type": "image/png"
+        // }
     ]
 }
