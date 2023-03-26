@@ -1,5 +1,5 @@
 import { State, Post } from "src/types";
-import { getPosts, hello } from "src/posts/posts.controller";
+import { getPosts } from "src/posts";
 
 const init = (): State => {
     let cfg = {
@@ -7,7 +7,7 @@ const init = (): State => {
         series_descriptions: [{name: '', details: ''}]
     };
 
-    let blog: Post[] = [];
+    let blog: Post[] = getPosts();
 
     return {
         cfg,
