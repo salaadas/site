@@ -3,7 +3,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { state } from './app/config';
 import { AppModule } from './app.module';
 import { join } from 'path';
-import { NotFoundExceptionFilter } from './notfound.filter';
+import { NotFoundExceptionFilter } from './not_found.filter';
 
 async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule);
