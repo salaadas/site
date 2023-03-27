@@ -1,0 +1,16 @@
+//- deps: {title = 'Error', why}
+
+extends base.pug
+
+block title
+  | Error
+
+block content
+  h1 Error
+  pre= why
+  p
+    | #{"You could try to "}
+    a(href='/') go home
+    | #{" or "}
+    a(href='https://github.com/salaadas/site/issues/new') report this issue
+    | #{" so it can be fixed."}

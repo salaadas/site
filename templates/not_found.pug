@@ -1,0 +1,12 @@
+//- deps: {title= 'Not found', path: string}
+
+extends base.pug
+
+block content
+  h1 Not found
+  p
+    | #{"The path at "}
+    code= path
+    | #{" could not be found. If you expected this path to exist, please "}
+    a(href='https://github.com/salaadas/site/issues/new') report this issue
+    | #{" so it can be fixed."}
