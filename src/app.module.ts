@@ -3,10 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MorganMiddleware } from '@nest-middlewares/morgan';
 import { PostsModule } from './posts';
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
     imports: [
-        PostsModule
+        PostsModule,
+        ConfigModule.forRoot({
+            envFilePath: '.env'
+        })
     ],
     controllers: [AppController],
     providers: [AppService],
