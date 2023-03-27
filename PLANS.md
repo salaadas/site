@@ -1,3 +1,6 @@
+TODO:
+- Remove state -> move everything to posts.service.ts
+
 Tech:
 
 - server framework: NestJS
