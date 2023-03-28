@@ -1,10 +1,13 @@
 import { Controller, Render, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
 import { join } from 'path';
-import { state } from "src/app/config";
-import { getPosts, BLOG_FOLDER } from ".";
+import { PostsService, BLOG_FOLDER } from "./posts.service";
 
 @Controller('blogs')
 export class PostsController {
+    constructor (private readonly PostsServices: PostsService) {
+        this.PostsServices.init();
+    }
+
     @Get()
     @Render('post_index')
     index() {
@@ -20,7 +23,7 @@ export class PostsController {
             // }
             //
             return {
-                posts: (state.blog = getPosts()),
+                posts: this.PostsServices.getAll(),
                 title: 'Blogposts',
                 show_extra: true,
                 today: new Date()
@@ -38,7 +41,7 @@ export class PostsController {
     @Get(':article')
     @Render('blog')
     post(@Param('article') article: string) {
-        const post = state.blog.find(p => p.file_name === article);
+        const post = this.PostsServices.getAll().find(p => p.file_name === article);
         if (!post) {
             throw new Error(`Cannot find post: ${article}`);
         }

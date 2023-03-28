@@ -1,5 +1,6 @@
 TODO:
-- Remove state -> move everything to posts.service.ts
+
+- Add series view
 
 Tech:
 

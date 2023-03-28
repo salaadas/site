@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { state } from './app/config';
 import { AppModule } from './app.module';
 import { join } from 'path';
 import { NotFoundExceptionFilter } from './not_found.filter';
@@ -13,6 +12,6 @@ async function bootstrap() {
     app.setBaseViewsDir(join(__dirname, '..', 'templates')); // for view engine templates
     app.setViewEngine('pug');
 
-    await app.listen(state.cfg.port);
+    await app.listen(3000);
 }
 bootstrap();
