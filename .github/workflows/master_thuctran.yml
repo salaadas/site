@@ -51,7 +51,7 @@ jobs:
         with:
           app-name: 'thuctran'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C29D725894444C348E66BC7CCE373DC2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: nest.zip
 
       - name: Delete zip file
