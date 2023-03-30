@@ -1,10 +1,10 @@
-//- deps: {name: string, title: `${name} posts`, description: string, posts: Post[]}
+//- deps: {name: string, title: `${name} posts`, desc: string, posts: Post[]}
 
 extends base.pug
 
 block content
-  h1= `Series: ${name}`
-  p= description
+  h1= title
+  p= desc
   ul
     each post in posts
       li

@@ -8,4 +8,6 @@ block content
   p
     ul
       each set in series
-        li= set
+        li
+          a(href=`/blogs/series/${set.name}`) #{set.name}
+          | #{`: ${set.details}`}

@@ -22,4 +22,13 @@ export class AppController {
             title: 'Contact Information',
         };
     }
+
+    @Get('faq')
+    @Render('faq')
+    faq() {
+        return {
+            title: 'Frequently Asked Questions',
+        };
+    }
+
 }

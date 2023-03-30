@@ -24,14 +24,14 @@ type Post = {
     };
 };
 
-type SeriesDescription = {
+type Series_Desc = {
     name: string;
     details: string;
 };
 
 type Config = {
     port: number;
-    series_descriptions: SeriesDescription[];
+    series_descriptions: Series_Desc[];
 };
 
 type State = {
@@ -39,4 +39,4 @@ type State = {
     blog: Post[];
 };
 
-export { Contact, Post, Author, State, Config };
+export { Contact, Post, Author, State, Config, Series_Desc };

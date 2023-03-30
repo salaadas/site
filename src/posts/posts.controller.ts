@@ -1,6 +1,15 @@
 import { Controller, Render, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
 import { join } from 'path';
+import { Series_Desc } from "src/types";
 import { PostsService, BLOG_FOLDER } from "./posts.service";
+
+const series_descs: Series_Desc[] = [
+    {
+        name: 'fuck-the-world',
+        details: 'testing out series feature'
+    }
+];
+
 
 @Controller('blogs')
 export class PostsController {
@@ -37,6 +46,21 @@ export class PostsController {
         }
     }
 
+    @Get('/series')
+    @Render('post_series')
+    series() {
+        return {
+            title: 'Blogposts by series',
+            series: series_descs,
+        };
+    }
+
+    @Get('/series/:series')
+    @Render('series_view')
+    series_view(@Param('series') series: string) {
+        const post_series = this.PostsServices.series_view(series_descs, series);
+        return { posts: post_series.posts, desc: post_series.desc, title: `${series} posts` };
+    }
 
     @Get(':article')
     @Render('blog')
@@ -65,15 +89,6 @@ export class PostsController {
             series: frontmatter.series,
             link: `${join(BLOG_FOLDER), post.file_name}`,
             content,
-        };
-    }
-
-    @Get('/series')
-    @Render('post-series')
-    series() {
-        return {
-            title: 'Blogposts by series',
-            series: '',
         };
     }
 }

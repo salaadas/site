@@ -1,6 +1,6 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { CloudinaryService } from "src/cloudinary/cloudinary.service";
-import { Post } from "src/types";
+import { Post, Series_Desc } from "src/types";
 import { join } from 'path';
 import * as matter from 'gray-matter';
 import * as fs from 'fs';
@@ -18,7 +18,7 @@ export const BLOG_DIR: string = join(__dirname, '..', '..', BLOG_FOLDER);
 export class PostsService {
     constructor(
         private cloudinary: CloudinaryService,
-        @Inject('POSTS') private posts: Post[]
+        @Inject('POSTS') private posts: Post[],
     ) {}
 
     async uploadImageToCloudinary(file: Express.Multer.File) {
@@ -73,6 +73,28 @@ export class PostsService {
         return posts;
     }
 
+    series_view(descs: Series_Desc[], series: string): {posts: Post[]; desc: string} {
+        const posts: Post[] = [];
+        for (let p of this.getAll()) {
+            if (!p.body.data.series) continue;
+            if (p.body.data.series != series) continue;
+
+            posts.push(p);
+        }
+
+        posts.reverse(); // reverse from oldest to latest
+        const desc = descs.find((p) => p.name = series);
+
+        if (posts.length == 0) {
+            throw new Error(`Series not found!`);
+        } else {
+            return {
+                posts,
+                desc: desc.details
+            };
+        }
+    }
+    
     init(): void {
         this.posts = this.loadPosts();
     }

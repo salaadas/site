@@ -13,6 +13,10 @@ import { CloudinaryModule } from "src/cloudinary/cloudinary.module";
         {
             provide: 'POSTS',
             useValue: []
+        },
+        {
+            provide: 'SERIES_DESCS',
+            useValue: []
         }
     ]
 })
