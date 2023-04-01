@@ -1,6 +1,4 @@
 html {
-    background: #181818;
-    color: #fffdd0;
     font-size: 18px;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
@@ -31,18 +29,28 @@ body {
     margin: 0.25em 0.5em 0.25em 0.25em;
 }
 
-::-moz-selection { /* Code for Firefox */
-    background: #fbbf24;
-}
-
-::selection {
-    background: #fbbf24;
+@media (prefers-color-scheme: light) {
+    .logo {
+        background-color: #ac7373;
+    }
 }
 
 fieldset {
     border: none;
     padding: 0;
     margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+article h1 {
+    font-weight: 900;
+}
+
+article small {
+    font-weight: 600;
 }
 
 pre {
@@ -52,9 +60,7 @@ pre {
 }
 
 code[class*="language-"],
-
 pre[class*="language-"],
-
 pre code {
     font-weight: 100;
     text-shadow: none;
@@ -75,25 +81,8 @@ iframe {
 
 a {
     cursor: pointer;
-    color: #fb923c;
     text-decoration: none;
     border-bottom: 1px solid;
-    border-color: #fb923c;
-}
-
-a:hover {
-    background-color: #ea580c;
-    color: #fff;
-}
-
-a:visited { 
-	color: #C1B7A9;
-	border-color: #a89984;   
-}
-
-a:visited:hover {
-    color: #fdf4c1;
-	background-color: #282828;
 }
 
 .grid {
@@ -218,14 +207,6 @@ a:visited:hover {
 }
 
 /* old starts here */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #fb923c;
-}
 
 /* .link { */
 /*     @apply underline decoration-1 decoration-sky-600 hover:decoration-sky-400; */
