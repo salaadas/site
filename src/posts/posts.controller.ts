@@ -31,6 +31,7 @@ export class PostsController {
             //     }
             // }
             //
+            this.PostsServices.init();
             return {
                 posts: this.PostsServices.getAll(),
                 title: 'Blogposts',
