@@ -12,6 +12,8 @@ block content
   meta(property='og:site_name' content=`${salaadas.job_title}`)
   meta(name='description' content=`${salaadas.job_title}`)
   meta(name='author' content=`${salaadas.name}`)
+  script
+    include ../static/js/time.js
 
   .grid
     div(class='cell -3of12')
@@ -40,6 +42,3 @@ block content
           a(href='https://www.facebook.com/thuctd.tran/' rel='me') Facebook
         li
           a(href='https://youtube.com/playlist?list=PLTEvdy7cOEn4FDXp4WGyb8aRI5w7VRQW9') Playlist
-
-      script
-        include ../static/js/time.js

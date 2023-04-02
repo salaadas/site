@@ -4,7 +4,9 @@ const getHoChiMinhTime = () => {
     const OFFSET = 7;
     const newD = new Date(utc + 1000 * 60 * 60 * OFFSET);
     
-    document.getElementById('time').innerHTML = newD.toLocaleTimeString();
+    if (document.getElementById('time')) {
+        document.getElementById('time').innerHTML = newD.toLocaleTimeString();
+    }
 };
 
 const interval = setInterval(getHoChiMinhTime, 1000);
