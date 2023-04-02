@@ -7,6 +7,8 @@ import * as fs from 'fs';
 import { HtmlRenderer, Parser } from 'commonmark';
 const readingTime = require('reading-time');
 
+import { parse } from 'node-html-parser';
+
 // markdown parser/reader/renderer
 const reader = new Parser({smart: true});
 const writer = new HtmlRenderer();
@@ -36,7 +38,47 @@ export class PostsService {
         const posts: Post[] = postFiles.map((p: string, i) => {
             const file = matter.read(join(BLOG_DIR, p));
             const parsed = reader.parse(file.content); // AST Node tree
-            const rendered = writer.render(parsed); // HTML in form of string
+            let rendered = writer.render(parsed); // HTML in form of string
+
+            const dom = parse(rendered);
+            // Hero
+            const CDN_PREFIX = 'https://res.cloudinary.com/dys56nlen/image/upload/';
+            dom.getElementsByTagName('salaadas-hero').forEach(el => {
+                el.parentNode.tagName = 'figure';
+                el.parentNode.setAttributes({
+                    class: 'hero',
+                    style: 'margin:0'
+                });
+
+                el.parentNode.appendChild(parse(`
+<picture style="margin:0">
+    <source type="image/avif" srcset=${CDN_PREFIX + 'f_avif,q_auto/hero/' + el.getAttribute('file')}>
+    <source type="image/webp" srcset=${CDN_PREFIX + 'f_auto/hero/' + el.getAttribute('file')}>
+    <img style="padding:0" loading="lazy" alt="hero image ${el.getAttribute('file')}" src=${CDN_PREFIX + 'hero/' + el.getAttribute('file')}>
+</picture>
+<figcaption>
+    Image generate by ${el.getAttribute('ai')} -- ${el.getAttribute('prompt')}
+</figcaption>
+`));
+                el.parentNode.parentNode.appendChild(parse(`<p></p>`));
+                el.remove();
+            });
+
+            // Images
+            dom.getElementsByTagName('salaadas-img').forEach(el => {
+                el.parentNode.appendChild(parse(`
+<a href=${CDN_PREFIX + el.getAttribute('path')} target="_blank">
+    <picture class="picture" style="margin:0">
+        <source type="image/avif" srcset=${CDN_PREFIX + 'f_avif,q_auto/' + el.getAttribute('path')}>
+        <source type="image/webp" srcset=${CDN_PREFIX + 'f_auto/' + el.getAttribute('path')}>
+        <img class="picture "style="padding:0" loading="lazy" alt="hero image ${el.getAttribute('path')}" src=${CDN_PREFIX + el.getAttribute('path')}>
+    </picture>
+</a>
+`));
+                el.remove();
+            });
+            
+            rendered = dom.toString();
 
             const read_time = Math.ceil(readingTime(rendered).minutes);
             const frontmatter = postContent[i].data;
