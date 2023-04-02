@@ -12,4 +12,6 @@ date: '2023-03-24'
 
 Hi, this second blog is inteded for testing out the sorting of my site
 
-![img](https://res.cloudinary.com/dys56nlen/image/upload/v1679847331/cld-sample-4.jpg)
+<salaadas-hero ai="Anything" file="glem_ganvgw" prompt="duo, (1girl, green hair, hoodie, long hair, green eyes, tired, holding coffee), (kitchen counter, coffee, coffee grinder, coffee machine, espresso machine), (1guy, brown hair, very short hair), happy"></salaadas-hero>
+
+<salaadas-img path='cld-sample-4'><salaadas-img>
