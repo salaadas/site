@@ -88,7 +88,6 @@ export class PostsController {
             tags: frontmatter.tags,
             read_time: frontmatter.read_time,
             series: frontmatter.series,
-            link: `${join(BLOG_FOLDER), post.file_name}`,
             content,
         };
     }
