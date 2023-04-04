@@ -1,4 +1,4 @@
-import { Controller, Render, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
+import { Controller, Render, Get, HttpException, HttpStatus, Param, NotFoundException } from "@nestjs/common";
 import { join } from 'path';
 import { Series_Desc } from "src/types";
 import { PostsService, BLOG_FOLDER } from "./posts.service";
@@ -68,17 +68,17 @@ export class PostsController {
     post(@Param('article') article: string) {
         const post = this.PostsServices.getAll().find(p => p.file_name === article);
         if (!post) {
-            throw new Error(`Cannot find post: ${article}`);
+            throw new NotFoundException(`Cannot find post: ${article}`);
         }
 
         const frontmatter = post.body.data;
         if (!frontmatter) {
-            throw new Error (`No metadata available for post: ${article}`);
+            throw new NotFoundException(`No metadata available for post: ${article}`);
         }
         
         const content = post.body.content;
         if (!content) {
-            throw new Error (`No content for post: ${article}`);
+            throw new NotFoundException(`No content for post: ${article}`);
         }
         
         return {

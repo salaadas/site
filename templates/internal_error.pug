@@ -1,0 +1,12 @@
+//- deps: {title= 'Internal Server Error', path: string}
+
+extends base.pug
+
+block content
+  h1 Internal Server Error
+  p
+    | #{"Failed to resolve the path at "}
+    code= path
+    | #{" . If you expected this path to exist, please "}
+    a(href='https://github.com/salaadas/site/issues/new') report this issue
+    | #{" so it can be fixed."}
