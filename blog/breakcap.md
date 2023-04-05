@@ -1,18 +1,12 @@
 ---
-title: 'Hello (Please remove)'
-description: 'this is my first blog'
-series: 'fuck-the-world'
+title: "I'm back! And yes, so will daily blogging!"
+description: 'Micro-blogging is happening this time as things are getting less hectic for me'
 tags:
-    - shit
-    - how
-    - did
-    - i
-    - end
-    - up
-    - in
-    - this
-date: '2022-08-28'
+    - sharing
+date: "2023-03-05"
 ---
+
+<salaadas-img path='blog/breakcap/cover_mmjw53'></salaadas-img>
 
 IT'S BEEN A while, or should I say: too long, since my last blog post. As with anything, life moves on, and I still encountered loads of things I wanted to share on this platform. And what better way to celebrate this comeback other than giving a quick rundown on the past several months (my work, study, and forseeable plans).
 
@@ -22,6 +16,8 @@ Without further ado, let me present what I have done so far:
 
 ## Keyboard(s)
 
+<salaadas-img path='blog/breakcap/noxary_h0byeq'></salaadas-img>
+
 From where I had left off in the last post (sorry, I did not have the time to continue another instalment of the keyboard series), I have finished it !!!!!!!!!!!!!!!!!!. Despite changing the keycaps and caught up in some problems, it is fully functional and types like any other keyboard.
 
 I had to address a few things, however. One noteworthy issue is that the plate cutouts' were a tad too small; thus the switches could not fit in properly. **SOLUTION, I hear you asked?** I had to spend 3 days sanding down each and every hole laboriously by hand. Phewwwwww, such a time sinker. Another thing is that I had used 2 small acrylic pieces as the legs of the keyboard. They work well, just not the prettiest.
@@ -29,6 +25,8 @@ I had to address a few things, however. One noteworthy issue is that the plate c
 Overall, I was decently happy with the end product. Would give it a solid 11/10 for my efforts in filing down all those 70 holes.
 
 ## CAD (not PCB design), but Fusion360
+
+<salaadas-hero ai="Me" file='../blog/breakcap/hellokitty3d_virebi' prompt='Keyboard I made myself'></salaadas-hero>
 
 If you don't already know, it is essentially 3D Modeling, and it is what those Mechanical Engineering undergrads study.
 
@@ -59,6 +57,8 @@ As for universities and application cycle, I'm waiting on Middlebury and Swarthm
 To all admissions officers and school representatives, thank you so much for your time, dedication towards me, a 17-year-old who is applying to your institutions. I wish you all have a good year and much love from Vietnam. Thank you for your responses to some of my childish questions, thank you for your time reading through what I wrote in my essay, and much thanks if you are reading this right now!!!
 
 ## School trip et Tet holiday
+
+<salaadas-img path='blog/breakcap/tet_vskjid'></salaadas-img>
 
 In January, our school decided that a four-day-trip would be held as none had been organized in the last 2 years. Me and the boys were eager to explore and spend our moments in Dalat, where the trip was held. And exceed our expectations, it was packed with memories. Not that the school did a good job. They did a decent job, but what made it home was: me, my friends. That's it! Although the food was cold, dry, and hard to swallow, and although our usher was not at all enthusiastic, we had a ton of fun (it was in fact so fun that I had thought of writing a blog about it on the way home, but I did not because....I forgot why). Anyway, here are some of it before it is too late:
 

@@ -31,7 +31,8 @@ body {
     font-size: 1rem;
     line-height: 1.75rem;
     margin: 0;
-    font-family: "Iosevka Aile", Menlo, monospace;
+    /* font-family: "Iosevka Aile", Menlo, monospace; */
+    font-family: Menlo, monospace;
     font-weight: 500;
     word-wrap: break-word;    
 }
@@ -94,12 +95,13 @@ pre code {
     text-shadow: none;
     margin: 1.75rem 0;
     font-size: 1.5rem;
-    font-family: "Iosevka Curly", Menlo, monospace;
+    font-family: Menlo, monospace;
+    /* font-family: "Iosevka Curly", Menlo, monospace; */
 }
 
 code {
-    font-family: Iosevka, Menlo, monospace;
-    font-family: "Iosevka Curly", Menlo, monospace;
+    font-family: Menlo, monospace;
+    /* font-family: "Iosevka Curly", Menlo, monospace; */
 }
 
 iframe {
@@ -254,7 +256,8 @@ blockquote,
 strong {
     font-size: 1rem;
     font-style: normal;
-    font-family: "Iosevka Aile", Menlo, monospace;
+    font-family: Menlo, monospace;
+    /* font-family: "Iosevka Aile", Menlo, monospace; */
 }
 
 blockquote,
@@ -286,7 +289,8 @@ ul {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Iosevka Etoile", Menlo, monospace;
+    font-family: Menlo, monospace;
+    /* font-family: "Iosevka Etoile", Menlo, monospace; */
 }
 
 blockquote,

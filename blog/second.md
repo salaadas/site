@@ -1,5 +1,5 @@
 ---
-title: 'Hi all'
+title: 'Hi all (please remove)'
 description: 'My second blog'
 tags:
     - hello
