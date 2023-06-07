@@ -4,9 +4,13 @@ import { AppService } from './app.service';
 import { MorganMiddleware } from '@nest-middlewares/morgan';
 import { PostsModule } from './posts';
 import { ConfigModule } from "@nestjs/config";
+import { TweetsModule } from './tweets';
+import { AuthModule } from './auth';
 
 @Module({
     imports: [
+        TweetsModule,
+        AuthModule,
         PostsModule,
         ConfigModule.forRoot({
             envFilePath: '.env'
