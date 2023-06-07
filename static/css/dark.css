@@ -71,23 +71,23 @@ h6 {
 
 @media (prefers-color-scheme: light) {
 	.dark {
-		background-color: #3f3f3f;
-		color: #dcdccc;
+		background-color: #fbf1c7;
+		color: #282828;
 	}
 
     .dark h1 {
-        color: #9fc59f;
+        color: #8f3f71;
     }
 
     .dark h2,
     .dark h3 {
-        color: #8fb28f;
+        color: #b16286;
     }
 
     .dark h4,
     .dark h5,
     .dark h6 {
-	    color: #7f9f7f;        
+	    color: #b16168; 
     }
 
 	.dark h1 a:hover,
@@ -96,31 +96,31 @@ h6 {
 	.dark h4 a:hover,
 	.dark h5 a:hover,
 	.dark h6 a:hover {
-		background-color: #d79921;
-		color: #181818;
+		background-color: #cc24d1;
+		color: #fbf1c7;
 	}
     
     .dark pre {
-		background-color: #fffdd0;
+		background-color: #bdae93;
 		padding: 0;
 		border: none;
 	}
 
     .dark a {
-        color: #7dbbbb;
-        border-color: #7dbbbb;
+        color: #076678;
+        border-color: #076678;
     }
     .dark a:hover {
-        color: #dcdccc;
-        background-color: #93e0e3;
-        border-color: #93e0e3;
+        color: #076678;
+        background-color: #cc24d1;
+        border-color: #cc24d1;
     }
     .dark a:visited {
 	    color: #4a7073;
 	    border-color: #4a7073;
     }
     .dark a:visited:hover {
-	    color: #dcdccc;
+	    color: #928374;
 	    background-color: #282828;
     }    
 }
