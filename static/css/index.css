@@ -28,7 +28,7 @@ html {
 }
 
 body {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.8rem;
     margin: 0;
     /* font-family: "Iosevka Aile", Menlo, monospace; */
@@ -286,7 +286,7 @@ p,
 .conversation-chat,
 blockquote,
 strong {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-style: normal;
     font-family: Menlo, monospace;
     /* font-family: "Iosevka Aile", Menlo, monospace; */
@@ -296,7 +296,7 @@ blockquote,
 code,
 em,
 strong {
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     line-height: 20px;
 }
 
