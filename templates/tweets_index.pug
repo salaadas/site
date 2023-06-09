@@ -6,8 +6,9 @@ block content
   h1= title
   p Where you can see my pure thoughts in chronological order
   ul
-    each t in tweets
-      li
-        | #{t.date}
-        | #{'::'}
-        p(class='tweet') !{t.content}
+    each t, index in tweets
+      if index !== 0
+        hr
+      li(class='tweet')
+        p= t.date + ' ::'
+        | !{t.content}

@@ -421,3 +421,7 @@ p {
   margin: 1em auto;
   padding: 0 1rem;
 }
+
+.tweet {
+    background-color: #ebdbb2;
+}
