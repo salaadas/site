@@ -9,10 +9,9 @@ block content
       | #{"For a breakdown by post series, see "}
       a(href='/blogs/series') here
       | #{"."}
-  p
-    ul
-      each post in posts
-        li
-          | #{post.body.formatDate()}
-          | #{" - "}
-          a(href=`/blogs/${post.file_name}`)= post.body.data.title
+  ul
+    each post in posts
+      li
+        | #{post.body.formatDate()}
+        | #{" - "}
+        a(href=`/blogs/${post.file_name}`)= post.body.data.title

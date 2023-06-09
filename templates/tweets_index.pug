@@ -1,0 +1,13 @@
+//- deps: {tweets: html[{date, content}], title: string}
+
+extends base.pug
+
+block content 
+  h1= title
+  p Where you can see my pure thoughts in chronological order
+  ul
+    each t in tweets
+      li
+        | #{t.date}
+        | #{'::'}
+        p(class='tweet') !{t.content}

@@ -5,12 +5,12 @@ import { MorganMiddleware } from '@nest-middlewares/morgan';
 import { PostsModule } from './posts';
 import { ConfigModule } from "@nestjs/config";
 import { TweetsModule } from './tweets';
-import { AuthModule } from './auth';
+import { AdminModule } from './admin';
 
 @Module({
     imports: [
         TweetsModule,
-        AuthModule,
+        AdminModule,
         PostsModule,
         ConfigModule.forRoot({
             envFilePath: '.env'

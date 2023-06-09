@@ -14,7 +14,7 @@ const reader = new Parser({smart: true});
 const writer = new HtmlRenderer();
 
 export const BLOG_FOLDER = 'blog';
-export const BLOG_DIR: string = join(__dirname, '..', '..', BLOG_FOLDER);
+export const BLOG_DIR: string = join(process.cwd(), BLOG_FOLDER);
 
 @Injectable()
 export class PostsService {
@@ -105,8 +105,7 @@ export class PostsService {
             };
         });
 
-        // TODO: sorts blog according to date (latest to oldest)
-        posts.sort((a, b) => {
+        posts.sort((a: Post, b: Post) => {
             const dateA = new Date(a.body.data.date);
             const dateB = new Date(b.body.data.date);
             return dateB.getTime() - dateA.getTime();
