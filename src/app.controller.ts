@@ -34,4 +34,9 @@ export class AppController {
         };
     }
 
+    @Get('resume')
+    @Render('resume')
+    resume() {
+        return {};
+    }
 }
