@@ -10,6 +10,9 @@ export class AppController {
     @Get()
     @Render('home')
     home() {
+        console.log('my name', process.env.ADMIN_NAME);
+        console.log('my password', process.env.ADMIN_KEY);
+
         return {
             salaadas
         };
