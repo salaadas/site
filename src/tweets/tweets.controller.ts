@@ -1,6 +1,5 @@
-import { Controller, Get, Render, Res } from "@nestjs/common";
+import { Controller, Get, Render } from "@nestjs/common";
 import { TweetsService } from './tweets.service'
-import { Response } from "express";
 
 @Controller('tweets')
 export class TweetsController {
@@ -9,7 +8,7 @@ export class TweetsController {
 
     @Get()
     @Render('tweets_index')
-    showTweets(@Res() res: Response) {
+    showTweets() {
         const tweets = this.TweetsServices.renderTweets();
 
         return {

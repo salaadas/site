@@ -6,6 +6,7 @@ import { PostsModule } from './posts';
 import { ConfigModule } from "@nestjs/config";
 import { TweetsModule } from './tweets';
 import { AdminModule } from './admin';
+import { CookieSessionModule } from 'nestjs-cookie-session';
 
 @Module({
     imports: [
@@ -14,6 +15,17 @@ import { AdminModule } from './admin';
         PostsModule,
         ConfigModule.forRoot({
             envFilePath: '.env'
+        }),
+        CookieSessionModule.forRoot({
+            session: {
+                secret: 'keyboard cat',
+                
+                // cookie options
+                maxAge: 60 * 60 * 1000, // one hour
+                httpOnly: false,
+                secure: false,
+                sameSite: 'lax'
+            }
         })
     ],
     controllers: [AppController],
