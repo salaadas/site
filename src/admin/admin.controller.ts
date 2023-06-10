@@ -36,7 +36,7 @@ export class AdminController {
     @Get()
     showForm(@Session() session: {key?: string}, @Res() res: Response) {
         if (!session.key || !this.AdminServices.verifyCookie(session.key)) {
-            res.redirect('/admin/login');
+            return res.redirect('/admin/login');
         }
 
         return res.render('post_tweets');
@@ -45,7 +45,7 @@ export class AdminController {
     @Post()
     postTweet(@Session() session: {key?: string}, @Res() res: Response, @Req() req: Request) {
         if (!session.key || !this.AdminServices.verifyCookie(session.key)) {
-            res.redirect('/admin/login');
+            return res.redirect('/admin/login');
         }
 
         const time = new Date().toISOString();
