@@ -124,7 +124,7 @@ export class PostsService {
         }
 
         posts.reverse(); // reverse from oldest to latest
-        const desc = descs.find((p) => p.name = series);
+        const desc = descs.find((p) => p.name === series);
 
         if (posts.length == 0) {
             throw new Error(`Series not found!`);
