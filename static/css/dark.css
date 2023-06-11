@@ -61,7 +61,7 @@ h6 {
 
 .dark a:visited { 
 	color: #C1B7A9;
-	border-color: #a89984;   
+	border-color: #a89984;
 }
 
 .dark a:visited:hover {
@@ -116,8 +116,8 @@ h6 {
         border-color: #cc24d1;
     }
     .dark a:visited {
-	    color: #4a7073;
-	    border-color: #4a7073;
+	    color: #3a4040;
+	    border-color: #3a4040;
     }
     .dark a:visited:hover {
 	    color: #928374;
