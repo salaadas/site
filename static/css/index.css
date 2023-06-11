@@ -100,9 +100,17 @@ figcaption {
     margin-bottom: 1em;
 }
 
+.tweet {
+    background-color: #383838;
+}
+
 @media (prefers-color-scheme: light) {
     figcaption {
         background-color: #865d8e;
+    }
+
+    .tweet {
+        background-color: #ebdbb2;
     }
 }
 
@@ -420,8 +428,4 @@ p {
 .container-fluid {
   margin: 1em auto;
   padding: 0 1rem;
-}
-
-.tweet {
-    background-color: #ebdbb2;
 }
