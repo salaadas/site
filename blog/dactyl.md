@@ -11,7 +11,7 @@ date: "2022-09-09"
 
 <salaadas-hero ai='Stable Diffusion' prompt='mojave, island, noon, blue sky, rain' file='mojave'></salaadas-hero>
 
-*You can check out the files here*
+*You can check out the files [**here**](https://github.com/salaadas/keyboard-files/blob/master/dactyl)*
 
 The quarantine period has led me to discover a new hobby: Mechanical Keyboards. It isn't just any keyboards, but those curvy and spaceship-resembled ones. Around the time I learned to touch-type properly, I started to developed an addiction to type on the site [monketype](https://monkeytype.com). Trust me.
 
