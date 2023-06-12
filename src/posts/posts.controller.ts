@@ -7,10 +7,6 @@ import { PostsService, BLOG_FOLDER } from "./posts.service";
 // TODO: seperation
 const series_descs: Series_Desc[] = [
     {
-        name: 'fuck-the-world',
-        details: 'report now if you are seeing this'
-    },
-    {
         name: 'revamp',
         details: 'where I showcase the development of this blog'
     }
