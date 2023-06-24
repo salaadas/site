@@ -33,7 +33,8 @@ h6 {
 }
 
 .dark pre {
-	background-color: #181818;
+	background-color: #080808;
+	padding: 1em;
 	border: none;
 }
 
@@ -101,8 +102,8 @@ h6 {
 	}
     
     .dark pre {
-		background-color: #bdae93;
-		padding: 0;
+		background-color: #282828; /* #bdae93; */
+		padding: 1em;
 		border: none;
 	}
 
