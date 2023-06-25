@@ -15,9 +15,9 @@ series: revamp
 
 # Motif
 
-I used to implement most of my webapps with React, delving into its core as a framework, and used to make my own version of React after reading OReilly's [Learning React](https://www.oreilly.com/library/view/learning-react/9781491954614/). It was an end-all-be-all, a panacea for all developers. Buzz words were including it; you see ReactJS vs *<insert-your-js-framework>* everywhere. I think everyone must have gone through that phase.
+I used to implement most of my webapps with React, delving into its core as a framework, and used to make my own version of React after reading OReilly's [Learning React](https://www.oreilly.com/library/view/learning-react/9781491954614/). It was an end-all-be-all, a panacea for all developers. Buzz words were using it; you see ReactJS vs *insert-your-js-framework-here* everywhere. I think everyone must have gone through that phase.
 
-Truth be told, as I started to emerge myself deeper into the whole emulation scene and low-level stuff, I starts to appreciates web as its core more: Wasm, JS, HTML, and more. And REST Api doesn't sound half-bad to me. That's when I started to rewrite my own blog in ExpressJS/NestJS. They are essentially the same thing; however, I chose the latter since it has Typescript compatibility without much hassle. Another reason for me to make another blog is because GatsbyJS failed to load some images while I was making blogs. It was infuriating; even more so when the community told me to pick another framework rather than give some pointers. So I did; I switched.
+Truth be told, as I started to emerge myself deeper into the whole emulation scene and low-level stuff, I then appreciated web at its core more: Wasm, JS, HTML, and their alike. REST Api additionally doesn't sound half-bad to me. That's when I started to rewrite my own blog in ExpressJS/NestJS. They are essentially the same thing; however, I chose the latter since it has Typescript compatibility without much hassle. Another reason for me to make another blog is because GatsbyJS failed to load some images while I was making blogs. It was infuriating; even more so when the community told me to pick another framework rather than give some pointers. So I did; I switched.
 
 # Hosting
 
